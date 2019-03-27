@@ -20,7 +20,14 @@ class App extends Component {
 
 // STYLED COMPONENTS
 const StyledApp = styled.div`
+  color: blue;
+  font-size: 62.5%;
   font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
+  font-weight: normal;
+
+  display: flex;
+  justify-content: space-around;
 `;
 // const ErrorMessage = styled.p`
 //   text-align: center;

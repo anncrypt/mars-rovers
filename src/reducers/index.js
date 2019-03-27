@@ -5,8 +5,8 @@ import initialState from './initialState';
 // IMPORT ACTION TYPES
 import { 
   SELECT_ROVER,
-  // ANOTHER_ACTION,
-  // ANOTHER_ACTION_2,
+  LAND_ROVER,
+  MOVE_ROVER
 } from '../actions';
 
 
@@ -18,6 +18,14 @@ export default (state = initialState(), action) => {
       return {
         ...state,
         selectedRover: action.payload, // index of the selected rover
+      }
+    case LAND_ROVER:
+      const updatedRovers = state.rovers;
+      updatedRovers[state.selectedRover].hasLanded = true;
+      console.log("LAND ROVER REDUCER RUNS");
+      return {
+        ...state,
+        rovers: updatedRovers
       }
     default:
       return state;

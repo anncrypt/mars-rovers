@@ -21,26 +21,34 @@ class SelectRover extends Component {
 
   render() {
     return (
-      <StyledApp>
+      <StyledSelectRover>
         <Heading>Select Rover</Heading>
+        <div>
+          <input type="radio" id="first" name="drone" value="1"></input>
+          <label htmlFor="first">First</label>
+        </div>
         <button onClick={() => this.props.selectRover(0)}>1</button>
         <button onClick={() => this.props.selectRover(1)}>2</button>
         <button onClick={() => this.props.selectRover(2)}>3</button>
         <button onClick={() => this.props.selectRover(3)}>4</button>
 
         <div>Displaying currently selected rover index {this.props.currentlySelectedRover}</div>
-      </StyledApp>
+      </StyledSelectRover>
     );
   }
 }
 
 
 // STYLED COMPONENTS
-const StyledApp = styled.div``;
+const StyledSelectRover = styled.div`
+  border: 1px solid blue;
+  padding: 1rem;
+  
+  display: flex;
+  flex-direction: column;
+`;
 
 const Heading = styled.h2`
-  text-transform: uppercase;
-  font-weight: normal;
   text-align: center;
   font-size: 1.2rem;
   color: blue;
