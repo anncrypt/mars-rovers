@@ -1,28 +1,32 @@
+// import './App.css';
+import styled from 'styled-components';
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Map from './components/Map';
+import Controls from './components/Controls';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <StyledApp>
+        {/* <header className="App-header"> */}
+        <Map />
+        <Controls />
+        {/* </header> */}
+      </StyledApp>
     );
   }
 }
+
+// STYLED COMPONENTS
+const StyledApp = styled.div`
+  font-family: 'Roboto Mono', monospace;
+`;
+// const ErrorMessage = styled.p`
+//   text-align: center;
+//   font-size: 1.2rem;
+//   color: tomato;
+// `;
+
 
 export default App;
