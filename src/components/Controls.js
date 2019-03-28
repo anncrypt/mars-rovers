@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React, { Component } from 'react';
 
 import SelectRover from './SelectRover';
@@ -7,13 +8,19 @@ import MoveRover from './MoveRover';
 class Controls extends Component {
   render() {
     return (
-      <div>
+      <StyledControls>
         <SelectRover />
         <LandRover />
         <MoveRover />
-      </div>
+      </StyledControls>
     );
   }
 }
+
+// STYLED COMPONENTS
+const StyledControls = styled.div`
+  border: 1px solid blue;
+  ${'' /* padding: 1rem; */}
+`;
 
 export default Controls;

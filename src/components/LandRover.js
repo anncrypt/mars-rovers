@@ -20,7 +20,7 @@ class LandRover extends Component {
   render() {
     return (
       <StyledSelectRover>
-        <Heading>Land Rover</Heading>
+        <StyledHeading>Land Rover</StyledHeading>
         <div>
           <div>
             <label htmlFor="xcoord">X</label>
@@ -38,7 +38,11 @@ class LandRover extends Component {
           </div>
         </div>
         <div>
-          <StyledButton>Land</StyledButton>
+          <StyledButton 
+            onClick={() => {}}
+          >
+          Land
+          </StyledButton>
         </div>
         
       </StyledSelectRover>
@@ -49,11 +53,12 @@ class LandRover extends Component {
 
 // STYLED COMPONENTS
 const StyledSelectRover = styled.div`
-  border: 1px solid blue;
+  border-top: 1px solid blue;
+  border-bottom: 1px solid blue;
   padding: 1rem;
 `;
 
-const Heading = styled.h2`
+const StyledHeading = styled.h2`
   text-transform: uppercase;
   font-weight: normal;
   text-align: center;

@@ -39,7 +39,7 @@ class Map extends Component {
   render() {
     return(
       <StyledMap>
-        <Heading>Map</Heading>
+        <StyledHeading>Map</StyledHeading>
         <Plateau>
           {/* { this.generateRows() } */}
 
@@ -68,9 +68,9 @@ const StyledMap = styled.div`
 
 `;
 
-const Heading = styled.h2`
-  text-transform: uppercase;
-  font-weight: normal;
+const StyledHeading = styled.h2`
+  ${'' /* text-transform: uppercase;
+  font-weight: normal; */}
   text-align: center;
   font-size: 0.05px;
   color: blue;
