@@ -112,7 +112,7 @@ const StyledSelectRover = styled.div`
   border-bottom: 1px solid blue;
   padding: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     width: 50%;
     border: none;
     border-right: 1px solid blue;
@@ -127,7 +127,7 @@ const CoordRow = styled.div`
 const StyledCoordWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 15%;
+  width: 20%;
   margin-right: 20px;
 
   label {
@@ -136,7 +136,7 @@ const StyledCoordWrapper = styled.div`
   }
 
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     width: 30%;
   }
 `;

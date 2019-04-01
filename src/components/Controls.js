@@ -8,7 +8,6 @@ import MoveRover from './MoveRover';
 
 const mapStateToProps = state => {
   return {
-    // currentlySelectedRover: state.selectedRover,
     hasRoverBeenDestroyed: state.rovers[state.selectedRover].hasBeenDestroyed,
   };
 };
@@ -33,7 +32,7 @@ const StyledControls = styled.div`
   border-left: 1px solid blue;
   width: 25%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     width: 100%;
     border: none;
   }
@@ -43,7 +42,7 @@ const MobileRowWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     flex-direction: row;
     border-bottom: 1px solid blue;
     width: 100%;
@@ -55,7 +54,7 @@ const ErrorMessage = styled.p`
   margin-left: 1rem;
   color: red;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     display: block;
   }
 `;

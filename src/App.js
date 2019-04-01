@@ -31,7 +31,7 @@ const StyledApp = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     flex-direction: column-reverse;
     height: auto;
   }
@@ -42,11 +42,5 @@ const MapWrapper = styled.div`
   justify-content: center;
   flex-grow: 1;
 `;
-// const ErrorMessage = styled.p`
-//   text-align: center;
-//   font-size: 1.2rem;
-//   color: tomato;
-// `;
-
 
 export default App;

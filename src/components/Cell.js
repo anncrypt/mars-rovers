@@ -40,7 +40,7 @@ const StyledCell = styled.div`
   align-items: center;
 
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     width: auto;
     height: auto;
     flex-grow: 1;

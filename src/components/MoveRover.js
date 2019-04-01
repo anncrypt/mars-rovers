@@ -9,7 +9,6 @@ import {
 
 const mapStateToProps = state => {
   return {
-    // currentlySelectedRover: state.selectedRover,
     hasRoverLanded: state.rovers[state.selectedRover].hasLanded,
     hasRoverBeenDestroyed: state.rovers[state.selectedRover].hasBeenDestroyed,
   };
@@ -51,7 +50,7 @@ class MoveRover extends Component {
 const StyledMoveRover = styled.div`
   padding: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     width: 50%;
   }
 `;
@@ -76,7 +75,7 @@ const StyledMessage = styled.p`
   font-size: 1.2rem;
   color: red;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     display: none;
   }
 `;

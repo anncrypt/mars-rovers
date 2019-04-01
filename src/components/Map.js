@@ -12,12 +12,8 @@ const mapStateToProps = state => {
   return {
     rovers: state.rovers,
     roversMoved: state.roversMoved,
-    // currentlySelectedRover: state.selectedRover,
   };
 };
-const mapDispatchToProps = dispatch => ({
-  // selectRover: (selectedRover) => dispatch(selectRover(selectedRover))
-})
 
 class Map extends Component {
   constructor(props) {
@@ -37,11 +33,8 @@ class Map extends Component {
   }
 
   getRoversAtCoords = (x, y) => {
-    // 
     let roversAtThisCell = [];
-    // console
     this.props.rovers.forEach((rover, i) => {
-      // console.log(rover);
       if (rover.hasLanded && rover.x === x && rover.y === y) {
         rover.index = i;
         roversAtThisCell.push(rover);
@@ -49,7 +42,6 @@ class Map extends Component {
     });
 
     if (roversAtThisCell.length > 0) {
-      console.log('found at least one rover at this cell', x, y)
       return roversAtThisCell;
     }
     return null;
@@ -87,9 +79,8 @@ class Map extends Component {
 
 // STYLED COMPONENTS
 const StyledMap = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
       width: 100%;
-      ${'' /* height: auto; */}
     }
 `;
 
@@ -119,11 +110,10 @@ const Plateau = styled.div`
   display: flex;
   flex-direction: column-reverse;
 
-  @media (max-width: 768px) {
-    width: 100%;
-    ${'' /* height: auto; */}
+  @media (max-width: 1140px) {
+    width: calc(100%-1rem);
+    margin: 0 0.5rem;
   }
 `;
 
-// export default Map;
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default connect(mapStateToProps, null)(Map);

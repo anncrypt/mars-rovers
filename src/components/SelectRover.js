@@ -42,7 +42,7 @@ class SelectRover extends Component {
           <StyledInput type="radio" name="rover" id="third" value="third" 
             onChange={() => this.props.selectRover(2)}
            checked={this.props.currentlySelectedRover === 2} ></StyledInput>
-          <StyledLabel 
+          <StyledLabel
             htmlFor="third"
             isSelected={this.props.currentlySelectedRover === 2}
             onClick={() => this.props.selectRover(2)}
@@ -64,13 +64,12 @@ class SelectRover extends Component {
 
 // STYLED COMPONENTS
 const StyledSelectRover = styled.div`
-  ${'' /* border: 1px solid blue; */}
   padding: 1rem;
   
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     border-bottom: 1px solid blue;
   }
 `;
