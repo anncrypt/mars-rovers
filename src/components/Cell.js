@@ -34,9 +34,32 @@ const StyledCell = styled.div`
   height: 25px;
   width: 25px;
 
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+
+  @media (max-width: 768px) {
+    width: auto;
+    height: auto;
+    flex-grow: 1;
+
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    svg {
+      width: 60%;
+      height: auto;
+      position: absolute;
+    
+    }
+  }
 
 `;
 

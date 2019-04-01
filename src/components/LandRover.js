@@ -55,7 +55,7 @@ class LandRover extends Component {
 
     return (
       <StyledSelectRover isSectionDisabled={this.props.hasRoverLanded}>
-        <StyledHeading>Land Rover</StyledHeading>
+        <StyledHeading isDisabled={isDisabled}>Land Rover</StyledHeading>
         <CoordRow>
           <StyledCoordWrapper>
             <StyledLabel htmlFor="xcoord" isDisabled={isDisabled}>X</StyledLabel>
@@ -111,6 +111,12 @@ const StyledSelectRover = styled.div`
   border-top: 1px solid blue;
   border-bottom: 1px solid blue;
   padding: 1rem;
+
+  @media (max-width: 768px) {
+    width: 50%;
+    border: none;
+    border-right: 1px solid blue;
+  }
 `;
 
 const CoordRow = styled.div`
@@ -126,7 +132,12 @@ const StyledCoordWrapper = styled.div`
 
   label {
     margin-bottom: 0.3rem;
-    font-size: 1.17em;
+    font-size: 0.8rem;
+  }
+
+
+  @media (max-width: 768px) {
+    width: 30%;
   }
 `;
 
@@ -160,6 +171,8 @@ const StyledHeading = styled.h2`
   text-align: left;
   font-size: 1.2rem;
   color: blue;
+
+  ${props => props.isDisabled ? 'color: grey' : ''};
 `;
 
 const StyledButton = styled.button`

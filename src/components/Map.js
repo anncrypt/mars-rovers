@@ -87,7 +87,10 @@ class Map extends Component {
 
 // STYLED COMPONENTS
 const StyledMap = styled.div`
-
+  @media (max-width: 768px) {
+      width: 100%;
+      ${'' /* height: auto; */}
+    }
 `;
 
 const StyledInvisible = styled.p`
@@ -100,6 +103,7 @@ const StyledHeading = styled.h2`
   text-align: left;
   font-size: 1.4rem;
   padding-left: 1rem;
+  
 `;
 
 const MapRow = styled.div`
@@ -114,6 +118,11 @@ const Plateau = styled.div`
 
   display: flex;
   flex-direction: column-reverse;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    ${'' /* height: auto; */}
+  }
 `;
 
 // export default Map;

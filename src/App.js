@@ -9,10 +9,10 @@ class App extends Component {
   render() {
     return (
       <StyledApp>
-        {/* <header className="App-header"> */}
-        <Map />
+        <MapWrapper>
+          <Map />
+        </MapWrapper>
         <Controls />
-        {/* </header> */}
       </StyledApp>
     );
   }
@@ -29,7 +29,18 @@ const StyledApp = styled.div`
   height: calc(100vh - 2px);
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+`;
+
+const MapWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 `;
 // const ErrorMessage = styled.p`
 //   text-align: center;

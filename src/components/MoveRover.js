@@ -10,6 +10,7 @@ import {
 const mapStateToProps = state => {
   return {
     // currentlySelectedRover: state.selectedRover,
+    hasRoverLanded: state.rovers[state.selectedRover].hasLanded,
     hasRoverBeenDestroyed: state.rovers[state.selectedRover].hasBeenDestroyed,
   };
 };
@@ -21,10 +22,10 @@ const mapDispatchToProps = dispatch => ({
 
 class MoveRover extends Component {
   render() {
-    const isDisabled = this.props.hasRoverBeenDestroyed;
+    const isDisabled = this.props.hasRoverBeenDestroyed || !this.props.hasRoverLanded;
     return (
       <StyledMoveRover>
-        <StyledHeading>Move Rover</StyledHeading>
+        <StyledHeading isDisabled={isDisabled}>Move Rover</StyledHeading>
         <StyledH3 isDisabled={isDisabled}>Rotate</StyledH3>
         <StyledButton 
           disabled={isDisabled}
@@ -49,6 +50,10 @@ class MoveRover extends Component {
 // STYLED COMPONENTS
 const StyledMoveRover = styled.div`
   padding: 1rem;
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const StyledHeading = styled.h2`
@@ -57,6 +62,8 @@ const StyledHeading = styled.h2`
   text-align: left;
   font-size: 1.2rem;
   color: blue;
+
+  ${props => props.isDisabled ? 'color: grey' : ''}
 `;
 
 const StyledH3 = styled.h3`
@@ -67,6 +74,11 @@ const StyledH3 = styled.h3`
 
 const StyledMessage = styled.p`
   font-size: 1.2rem;
+  color: red;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const StyledButton = styled.button`
