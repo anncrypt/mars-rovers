@@ -26,6 +26,8 @@ const StyledApp = styled.div`
   text-transform: uppercase;
   font-weight: normal;
 
+  height: calc(100vh - 2px);
+
   display: flex;
   justify-content: space-around;
 `;

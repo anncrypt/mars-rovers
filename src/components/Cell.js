@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import IconRover from './svg/IconRover';
+
+const mapStateToProps = state => {
+  return {
+    rovers: state.rovers,
+  };
+};
+const mapDispatchToProps = dispatch => ({
+  // selectRover: (selectedRover) => dispatch(selectRover(selectedRover))
+})
 
 class Cell extends Component {
   render() {
     return (
       <StyledCell>
-        <SuperSmallText>{this.props.x}-{this.props.y}</SuperSmallText>
+        {this.props.roversAtCell !== null && this.props.roversAtCell.map((rover) => {
+          return <IconRover 
+            key={`cell-${this.props.x}-${this.props.y}-rover-${rover.index+1}`}
+            roverNumber={rover.index+1}
+            direction={rover.dir}
+            />
+        })}
       </StyledCell>
     );
   }
@@ -14,14 +31,13 @@ class Cell extends Component {
 // STYLED COMPONENTS
 const StyledCell = styled.div`
   border-right: 1px solid rgba(102, 51, 153, 0.5);
-  ${'' /* border-right: 0.5px solid rgba(102, 51, 153, 0.6); */}
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 `;
 
-const SuperSmallText = styled.p`
-  font-size: 0.1rem;
-`;
-
-export default Cell;
+export default connect(mapStateToProps, mapDispatchToProps)(Cell);

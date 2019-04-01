@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
 import Cell from './Cell';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import {
+  NUMBER_HORIZONTAL_CELLS,
+  NUMBER_VERTICAL_CELLS,
+} from '../util/constants';
+
+
+const mapStateToProps = state => {
+  return {
+    rovers: state.rovers,
+    roversMoved: state.roversMoved,
+    // currentlySelectedRover: state.selectedRover,
+  };
+};
+const mapDispatchToProps = dispatch => ({
+  // selectRover: (selectedRover) => dispatch(selectRover(selectedRover))
+})
 
 class Map extends Component {
-
   constructor(props) {
     super(props);
     const template = [];
-    for (let y = 0; y < 25; y++) {
+    for (let y = 0; y < NUMBER_VERTICAL_CELLS; y++) {
       let row = [];
-      for (let x = 0; x < 31; x++) {
+      for (let x = 0; x < (NUMBER_HORIZONTAL_CELLS+1); x++) {
         row.push([x, y]);
       }
       template.push(row);
@@ -20,37 +36,42 @@ class Map extends Component {
     }
   }
 
-  // generateRows = () => {
-  //   for (let y = 0; y < 25; y++) {
-  //     return (
-  //       <MapRow>
-  //         {this.generateColumns(y)}
-  //       </MapRow>
-  //     );
-  //   }
-  // }
+  getRoversAtCoords = (x, y) => {
+    // 
+    let roversAtThisCell = [];
+    // console
+    this.props.rovers.forEach((rover, i) => {
+      // console.log(rover);
+      if (rover.hasLanded && rover.x === x && rover.y === y) {
+        rover.index = i;
+        roversAtThisCell.push(rover);
+      }
+    });
 
-  // generateColumns = (y) => {
-  //   for (let x = 0; x < 31; x++) {
-  //     return <Cell x={x} y={y} />
-  //   }
-  // }
+    if (roversAtThisCell.length > 0) {
+      console.log('found at least one rover at this cell', x, y)
+      return roversAtThisCell;
+    }
+    return null;
+  }
   
   render() {
     return(
       <StyledMap>
         <StyledHeading>Map</StyledHeading>
         <Plateau>
-          {/* { this.generateRows() } */}
-
           { this.state.template.map((row, i) => {
               return <MapRow key={`row-${i}`}>
                 {
+                  // find out if there is a rover at this coords
                   row.map((coords) => {
+                    let roversAtCell = this.getRoversAtCoords(coords[0], coords[1])
+
                     return <Cell 
-                      // key={`cell-${coords[0]}-${coords[1]}`}
-                      // x={coords[0]} 
-                      // y={coords[1]}
+                      key={`cell-${coords[0]}-${coords[1]}`}
+                      x={coords[0]} 
+                      y={coords[1]}
+                      roversAtCell={roversAtCell}
                     />
                   })
                 }
@@ -58,6 +79,7 @@ class Map extends Component {
             })
           }
         </Plateau>
+        <StyledInvisible>{this.props.roversMoved }</StyledInvisible>
       </StyledMap>
     );
   }
@@ -68,16 +90,19 @@ const StyledMap = styled.div`
 
 `;
 
+const StyledInvisible = styled.p`
+  visibility: hidden;
+`
+
 const StyledHeading = styled.h2`
-  ${'' /* text-transform: uppercase;
-  font-weight: normal; */}
-  text-align: center;
-  font-size: 0.05px;
+  font-weight: normal;
   color: blue;
+  text-align: left;
+  font-size: 1.4rem;
+  padding-left: 1rem;
 `;
 
 const MapRow = styled.div`
-  ${'' /* border: 1pz solid green; */}
   display: flex;
   border-bottom: 1px solid rgba(102, 51, 153, 0.5);
 
@@ -91,4 +116,5 @@ const Plateau = styled.div`
   flex-direction: column-reverse;
 `;
 
-export default Map;
+// export default Map;
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

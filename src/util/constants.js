@@ -1,0 +1,2 @@
+export const NUMBER_HORIZONTAL_CELLS = 30;
+export const NUMBER_VERTICAL_CELLS = 25;

@@ -19,7 +19,7 @@ class Controls extends Component {
 
 // STYLED COMPONENTS
 const StyledControls = styled.div`
-  border: 1px solid blue;
+  border-left: 1px solid blue;
   ${'' /* padding: 1rem; */}
 `;
 
